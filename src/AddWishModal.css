@@ -97,3 +97,12 @@
     font-size: 18pt;
     margin: 0.5em;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'] {
+    -moz-appearance: textfield;
+}

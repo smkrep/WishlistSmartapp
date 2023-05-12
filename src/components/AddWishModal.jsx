@@ -23,9 +23,9 @@ export const AddWishModal = ({active, setActive}) => {
                     <option value="medium">Средней важности</option>
                     <option value="not-important">Неважно</option>
                 </select>
-                <input className="textInput" type="text" id="name" name="name" placeholder="Введите название" />
-                <input className="textInput" type="text" id="price" name="price" placeholder="Введите цену" />
-                <input className="textInput" type="text" id="category" name="category" placeholder="Введите категорию" />
+                <input className="textInput" type="text" id="name" name="name" placeholder="Введите название" required minlength="1" maxlength="32" />
+                <input className="textInput" type="number" id="price" name="price" placeholder="Введите цену" required min="1"/>
+                <input className="textInput" type="text" id="category" name="category" placeholder="Введите категорию" requiredminlength="1" maxlength="32"/>
                 <textarea className="textArea" id="additional-info" name="additional-info"></textarea>
                 <button className="buttonSubmit" type="submit">Добавить</button>
 
