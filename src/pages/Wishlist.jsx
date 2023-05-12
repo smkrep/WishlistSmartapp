@@ -15,14 +15,19 @@ export default class WishList extends React.Component {
 
   onAddChild = (state) => {
     this.setState({
-      wishes: this.state.wishes.push(state)
+      // wishes: this.state.wishes.push(state)
+      wishes: [...this.state.wishes, state]
     });
+    console.log("из AddChild")
     console.log(this.state.wishes)
   }
 
   render() {
     const chA = [];
+    const { wishes } = this.state
 
+    console.log("Тут что то не то")
+    console.log(wishes)
 
     for (var i = 0; i < this.state.wishes.length; i += 1) {
       chA.push(<Wish 
@@ -33,7 +38,7 @@ export default class WishList extends React.Component {
         category={this.state.wishes[i].category}
         additional_info={this.state.wishes[i].additional_info} />);
     };
-    console.log(this.state.wishes)
+    
     return (
       <ParentComponent onAdd={this.onAddChild}>
         {chA}
