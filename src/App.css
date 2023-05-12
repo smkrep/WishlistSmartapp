@@ -61,27 +61,27 @@ body {
   grid-template-rows: 1fr 1fr;
 }
 
-.low-priority {
+.not-important {
   border-color: #19963f !important;
 }
 
-.middle-priority {
+.medium {
   border-color: #d3d00e !important;
 }
 
-.high-priority {
+.important {
   border-color: #d31515 !important;
 }
 
-.low-priority > .body {
+.not-important > .body {
   border-color: #19963f !important;
 }
 
-.middle-priority > .body {
+.medium > .body {
   border-color: #d3d00e !important;
 }
 
-.high-priority > .body {
+.important > .body {
   border-color: #d31515 !important;
 }
 
