@@ -1,5 +1,6 @@
 body {
   background-color: #292929; 
+  font-family: 'San Francisco' !important;
 }
 
 .container {
@@ -28,21 +29,24 @@ body {
 .addWishButton {
   background-color: rgb(92, 92, 92);
   padding: 16px 32px;
-  font-weight: 500;
-  font-style: normal;
   font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -3.8;
   color: rgb(224, 224, 224);
+  font-family: 'San Francisco'
 }
 
 .addWishButton {
   
   width: 30%;
-  height: 72px;
+  height: fit-content;
+  cursor: pointer;
+  box-shadow: 0 0 50px #202020;
   outline: none;
-  border: 2px solid rgb(224, 224, 224);
+  border: none;
   border-radius: 64px;
+}
+
+.addWishButton:hover {
+  background-color: #3d3d3d;
 }
 
 
@@ -162,9 +166,7 @@ body {
 }
 
 .category-name {
-  font-size: 24pt;
-  text-decoration: underline;
-  cursor: pointer;
+  font-size: 20pt;
   text-overflow: ellipsis;
   overflow: hidden;
   margin-left: 2%;
@@ -306,5 +308,11 @@ body {
 @media (min-width:351px) and (max-width:450px) {
   .wish {
     width: 18rem;
+  }
+}
+
+@media (max-width:768px) {
+  .addWishButton {
+    width: 70%;
   }
 }
