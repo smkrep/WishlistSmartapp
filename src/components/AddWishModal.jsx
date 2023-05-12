@@ -53,7 +53,7 @@ export const AddWishModal = ({active, setActive, onAdd}) => {
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <div className='modal__content' onClick={e => e.stopPropagation()}>
-          <button className="closeModal" onClick={() => {setActive(false);clearInput()}}>×</button>
+          <button className="closeModal" onClick={() => {setActive(false); clearInput()}}>×</button>
             <AddForm onAdd={onAdd} />
         </div>
     </div>
