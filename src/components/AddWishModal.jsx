@@ -1,12 +1,21 @@
 import React from 'react'
 import "../AddWishModal.css"
 
+function clearInput() {
+  let inputs = document.getElementsByClassName("textInput")
+  document.getElementById("additional-info").value = ""
+  document.getElementById("importance").value = "important"
+  for (let i = 0; i < inputs.length; i += 1){
+    inputs[i].value = ""
+  }
+}
+
 export const AddWishModal = ({active, setActive}) => {
 
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <div className='modal__content' onClick={e => e.stopPropagation()}>
-          <button className="closeModal" onClick={() => setActive(false)}>×</button>
+          <button className="closeModal" onClick={() => {setActive(false);clearInput()}}>×</button>
             <form>
 
                 <select className="selector" id="importance" name="importance">
