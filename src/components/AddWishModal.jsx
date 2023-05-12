@@ -1,20 +1,14 @@
 import React from 'react'
 import "../AddWishModal.css"
 
-function clearInput() {
-  let inputs = document.getElementsByClassName("textInput")
-  document.getElementById("additional-info").value = ""
-  document.getElementById("importance").value = "important"
-  for (let i = 0; i < inputs.length; i += 1){
-    inputs[i].value = ""
-  }
-}
+
 
 class AddForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {importance: 'important', name: '', price: '', category: '', additional_info: ''};
     this.onAdd = props.onAdd
+    this.setActive = props.setActive
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -25,11 +19,24 @@ class AddForm extends React.Component {
 
   handleSubmit(event) {
     this.onAdd(this.state)
+    this.clearInput()
     event.preventDefault();
+  }
+ 
+  clearInput() {
+    this.setState({importance: 'important', name: '', price: '', category: '', additional_info: ''});
+    let inputs = document.getElementsByClassName("textInput")
+    document.getElementById("additional-info").value = ""
+    document.getElementById("importance").value = "important"
+    for (let i = 0; i < inputs.length; i += 1){
+      inputs[i].value = ""
+    }
   }
 
   render() {
     return (
+      <>
+      <button className="closeModal" onClick={() => {this.setActive(false); this.clearInput()}}>×</button>
       <form onSubmit={this.handleSubmit}>
 
         <select className="selector" value={this.state.importance} onChange={this.handleChange} id="importance" name="importance">
@@ -44,6 +51,7 @@ class AddForm extends React.Component {
         <button className="buttonSubmit" type="submit">Добавить</button>
 
     </form>
+    </>
     );
   }
 }
@@ -53,8 +61,7 @@ export const AddWishModal = ({active, setActive, onAdd}) => {
   return (
     <div className={active ? "modal active" : "modal"} onClick={() => setActive(false)}>
         <div className='modal__content' onClick={e => e.stopPropagation()}>
-          <button className="closeModal" onClick={() => {setActive(false); clearInput()}}>×</button>
-            <AddForm onAdd={onAdd} />
+            <AddForm onAdd={onAdd} setActive={setActive} />
         </div>
     </div>
   )

@@ -9,29 +9,23 @@ export default class WishList extends React.Component {
     super(props);
     
     this.state = {
-      wishes: [{importance: 'important', name: 'asd', price: '13', category: 'aa', additional_info: 'a'}]
+      wishes: []
     }
   }
 
   onAddChild = (state) => {
     this.setState({
-      // wishes: this.state.wishes.push(state)
       wishes: [...this.state.wishes, state]
     });
-    console.log("из AddChild")
-    console.log(this.state.wishes)
   }
 
   render() {
     const chA = [];
-    const { wishes } = this.state
-
-    console.log("Тут что то не то")
-    console.log(wishes)
 
     for (var i = 0; i < this.state.wishes.length; i += 1) {
       chA.push(<Wish 
         key={i} 
+        id = {i}
         importance={this.state.wishes[i].importance} 
         name={this.state.wishes[i].name} 
         price={this.state.wishes[i].price} 
@@ -49,7 +43,6 @@ export default class WishList extends React.Component {
 
 export const ParentComponent = props => {
   const [modalActive, setModalActive] = useState(false);
-  console.log(props)
   return(
   <div>
     <section className='buttonContainer'>
@@ -61,10 +54,3 @@ export const ParentComponent = props => {
     <AddWishModal active={modalActive} setActive={setModalActive} onAdd={props.onAdd}/>
   </div>)
 };
-
-/* {props.wishes.map(wish => <Wish key={Math.random()} 
-        importance={wish.importance}
-        name={wish.name} 
-        price={wish.price} 
-        category={wish.category}
-        additional_info={wish.additional_info} />)} */
