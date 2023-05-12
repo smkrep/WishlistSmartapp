@@ -4,7 +4,7 @@ import { AddWishButton } from '../components/AddWishButton'
 import { AddWishModal } from '../components/AddWishModal'
 
 export const Wishlist = () => {
-  const [modalActive, setModalActive] = useState(true);
+  const [modalActive, setModalActive] = useState(false);
   return (
   <div>
     <section className='buttonContainer'>
