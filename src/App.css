@@ -1,38 +1,310 @@
-.App {
-  text-align: center;
+body {
+  background-color: #292929; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+  margin: 0.78%; /*10px*/
+  padding: 2.34%; /*30px*/
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 3%; /*150px*/
+  margin-bottom: 5.86%; /*75px*/
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.buttonContainer {
+  margin: 0.78%; /*10px*/
+  padding: 2.34%; /*30px*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 3%; /*150px*/
+  margin-bottom: 3%; /*75px*/
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.addWishButton {
+  background-color: rgb(92, 92, 92);
+  padding: 16px 32px;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -3.8;
+  color: rgb(224, 224, 224);
+}
+
+.addWishButton {
+  
+  width: 30%;
+  height: 72px;
+  outline: none;
+  border: 2px solid rgb(224, 224, 224);
+  border-radius: 64px;
+}
+
+
+.container-2 {
+  margin: 0.78%; /*10px*/
+  padding: 2.34%; /*30px*/
+  display: grid;
+  margin-top: 11.72%; /*150px*/
+  margin-bottom: 5.86%; /*75px*/
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.low-priority {
+  border-color: #19963f !important;
+}
+
+.middle-priority {
+  border-color: #d3d00e !important;
+}
+
+.high-priority {
+  border-color: #d31515 !important;
+}
+
+.low-priority > .body {
+  border-color: #19963f !important;
+}
+
+.middle-priority > .body {
+  border-color: #d3d00e !important;
+}
+
+.high-priority > .body {
+  border-color: #d31515 !important;
+}
+
+
+.wish {
+  width: 20rem;
+  height: 15rem;
+  max-height: 15rem;
+  border-radius: 15px;
+  background: rgb(92, 92, 92);
+  border: 2px solid;
+  margin: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  transition: max-height 1s;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.wish > .header {
+      width: 100%;
+      height: 2rem;
+      border-radius: 15px 15px 0 0;
+      text-align: right;
   }
-  to {
-    transform: rotate(360deg);
+
+  .options {
+    margin: 0 3% 0 0;
+    color: rgb(224, 224, 224);
+    font-size: 20pt;
+    cursor: pointer;
+  }
+  
+
+.wish > .name {
+      width: 100%;
+      height: 35%;
+      line-height: 84px;
+      text-align: center;
+      color: rgb(224, 224, 224);
+      font-size: 20pt;
+      overflow: hidden;
+      background: #3d3d3d;
+      border-bottom: 2px solid;
+      border-color: inherit;
+      transition: height 1s;
+}
+
+.wish > .name > span {
+  max-height: 80%;
+  max-width: 90%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 24pt;
+}
+
+  .wish > .body {
+    background: rgb(92, 92, 92);
+    width: 90%;
+    height: 6rem;
+    position: relative;
+    padding: 5%;
+    border-radius: 0 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.price {
+  max-width: 80%;
+  color: rgb(224, 224, 224);
+  font-size: 24pt;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.category {
+  color: rgb(224, 224, 224);
+  font-size: 20pt;
+  display: flex;
+  margin-top: 5%;
+}
+
+.category-name {
+  font-size: 24pt;
+  text-decoration: underline;
+  cursor: pointer;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-left: 2%;
+}
+
+.description {
+  max-height: 200px;
+  text-align: left;
+  line-height: normal;
+  padding: 5%;
+  overflow-y: scroll;
+}
+
+.description-parameter {
+  font-size: 18pt;
+}
+
+.description-text {
+  margin: 1% 0 1% 0;
+  font-size: 14pt;
+  word-break: break-word;
+}
+
+.triangle-down {
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top-color: inherit !important;
+  border-bottom: solid 29px transparent;
+  border-top: solid 29px;
+  border-left: solid 29px transparent;
+  border-right: solid 29px transparent;
+  cursor: pointer;
+}
+
+.triangle-down:before {
+  content: "";
+  width: 0;
+  height: 0;
+  
+  position: absolute;
+  border-bottom: solid 28px transparent;
+  border-top: solid 28px #3d3d3d;
+  border-left: solid 28px transparent;
+  border-right: solid 28px transparent;
+  top: -31px;
+  left: -28px;
+}
+
+.triangle-up {
+  top: -60px;
+  right: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-bottom-color: inherit !important;
+  border-bottom: solid 29px;
+  border-top: solid 29px transparent;
+  border-left: solid 29px transparent;
+  border-right: solid 29px transparent;
+  cursor: pointer;
+}
+
+.triangle-up:before {
+  content: "";
+  width: 0;
+  height: 0;
+  
+  position: absolute;
+  border-bottom: solid 28px rgb(92, 92, 92);
+  border-top: solid 28px transparent;
+  border-left: solid 28px transparent;
+  border-right: solid 28px transparent;
+  top: -25px;
+  left: -28px;
+}
+
+.expanded .name  {
+  height: fit-content !important;
+  transition: height 1s;
+}
+
+.wish.expanded {
+  height: fit-content !important;
+  max-height: 50rem;
+  transition: max-height 1s;
+}
+
+.expanded .category-name {
+  overflow: unset;
+  word-break: break-word;
+}
+.expanded .body {
+  height: fit-content;
+}
+.expanded .name span {
+  overflow: unset;
+  word-break: break-word;
+}
+.expanded .price {
+  overflow: unset;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(92, 92, 92);
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(75, 75, 75);
+}
+
+@media (max-width:350px) {
+  .wish {
+    width: 18rem;
+  }
+}
+
+@media (max-width:350px) {
+  .wish {
+    width: 16rem;
+  }
+}
+@media (min-width:351px) and (max-width:450px) {
+  .wish {
+    width: 18rem;
   }
 }
