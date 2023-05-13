@@ -20,6 +20,7 @@ class AddForm extends React.Component {
   handleSubmit(event) {
     this.onAdd(this.state)
     this.clearInput()
+    this.setActive(false)
     event.preventDefault();
   }
  
