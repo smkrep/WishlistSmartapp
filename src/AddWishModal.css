@@ -69,6 +69,7 @@
     font-size: 18pt;
     padding: 10px;
     margin-bottom: 1em;
+    cursor: pointer;
 }
 
 .buttonSubmit {
@@ -81,7 +82,7 @@
     padding: 10px;
 }
 
-.buttonSubmit:hover, .closeModal:hover {
+.buttonSubmit:hover, .closeModal:hover, .selector:hover {
     background-color: #2e2e2e;
   }
 
