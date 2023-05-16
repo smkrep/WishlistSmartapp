@@ -17,14 +17,15 @@ export default class Wish extends React.Component {
                 <div className="header">
                     <p className="options">⋮</p>
                 </div>
-                <div className="name">
+                <div className="name" onClick={this.handleClick}>
                     <span>{this.state.name}</span>
+                    <p className='description-header'>Подробнее</p>
                     <div className="description">
                         <p className="description-text">{this.state.additional_info}</p>
                     </div>
                 </div>
-                <div className="body">
-                    <div className="triangle-down" onClick={this.handleClick}></div>
+                <div className="body" id='wish-body'>
+                    <div className="triangle-down" onClick={this.handleClick} id={`wish-button-${this.state.id}`}></div>
                     <span className="price">{this.state.price}</span>
                     <div className="category">
                         <span>Категория:</span>
@@ -36,7 +37,7 @@ export default class Wish extends React.Component {
     }
 
     handleClick(event){
-        let el = event.currentTarget
+        const el = document.getElementById(`wish-button-${this.state.id}`)
         const wish = document.getElementById(`wish-${this.state.id}`)
         wish.classList.toggle('expanded')
         if (el.classList.contains('triangle-down')){
@@ -48,5 +49,6 @@ export default class Wish extends React.Component {
             el.classList.add('triangle-down')
         }
     }
+
 
   } 

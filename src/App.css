@@ -122,10 +122,23 @@ body {
       color: rgb(224, 224, 224);
       font-size: 20pt;
       overflow: hidden;
+      cursor: pointer;
       background: #3d3d3d;
       border-bottom: 2px solid;
       border-color: inherit;
       transition: height 1s;
+}
+
+.wish:hover {
+    max-height: 20rem;
+    height: 20rem;
+    transition: max-height 1s;
+}
+
+.description-header {
+   font-size: 10pt;
+   line-height: 10pt;
+   margin: 0;
 }
 
 .wish > .name > span {
