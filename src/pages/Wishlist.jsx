@@ -82,7 +82,6 @@ export default class WishList extends React.Component {
   }
 
   onRemoveChild = (state) => {
-    console.log(state)
     this.setState({
       wishes: this.state.wishes.filter(elem => elem.name !== state)
     })
@@ -93,8 +92,8 @@ export default class WishList extends React.Component {
 
     for (var i = 0; i < this.state.wishes.length; i += 1) {
       chA.push(<Wish 
-        key={i} 
-        id = {i}
+        key={Math.random().toString(36).substring(7)} 
+        id = {Math.random().toString(36).substring(7)}
         importance={this.state.wishes[i].importance} 
         name={this.state.wishes[i].name} 
         price={this.state.wishes[i].price} 
@@ -102,7 +101,7 @@ export default class WishList extends React.Component {
         additional_info={this.state.wishes[i].additional_info}
         onRemove = {this.onRemoveChild}/>);
     };
-    
+
     return (
       <ParentComponent onAdd={this.onAddChild}>
         {chA}
@@ -110,7 +109,7 @@ export default class WishList extends React.Component {
     );
   }
 } 
-
+ 
 export const ParentComponent = props => {
   const [modalActive, setModalActive] = useState(false);
   return(
