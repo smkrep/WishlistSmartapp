@@ -88,7 +88,7 @@ body {
 
 .wish {
   width: 20rem;
-  height: 15rem;
+  height: fit-content;
   max-height: 15rem;
   border-radius: 15px;
   background: rgb(92, 92, 92);
@@ -96,7 +96,7 @@ body {
   margin: 10px;
   display: flex;
   flex-direction: column;
-  transition: max-height 1s;
+  transition: max-height 0.5s ease-out;
 }
 
 .wish > .header {
@@ -126,19 +126,25 @@ body {
       background: #3d3d3d;
       border-bottom: 2px solid;
       border-color: inherit;
-      transition: height 1s;
+      transition: height 0.5s;
 }
 
 .wish:hover {
-    max-height: 20rem;
-    height: 20rem;
-    transition: max-height 1s;
+    max-height: 17rem;
+    transition: max-height 0.5s ease-in;
+}
+
+
+.wish:hover .name {
+  height: 48%;
+  transition: height 0.5s;
 }
 
 .description-header {
+   color: rgb(150, 150, 150);
    font-size: 10pt;
    line-height: 10pt;
-   margin: 0;
+   margin: 10px 0 0 0;
 }
 
 .wish > .name > span {
@@ -261,22 +267,23 @@ body {
 
 .expanded .name  {
   height: fit-content !important;
-  transition: height 1s;
+  transition: height 0.5s;
 }
 
 .wish.expanded {
-  height: fit-content !important;
   max-height: 50rem;
-  transition: max-height 1s;
+  transition: max-height 0.5s ease-in;
 }
 
 .expanded .category-name {
   overflow: unset;
   word-break: break-word;
 }
+
 .expanded .body {
   height: fit-content;
 }
+
 .expanded .name span {
   overflow: unset;
   word-break: break-word;
