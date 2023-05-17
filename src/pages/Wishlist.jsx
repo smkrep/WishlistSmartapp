@@ -19,6 +19,13 @@ export default class WishList extends React.Component {
     });
   }
 
+  onRemoveChild = (state) => {
+    console.log(state)
+    this.setState({
+      wishes: this.state.wishes.filter(elem => elem.name !== state)
+    })
+  }
+
   render() {
     const chA = [];
 
@@ -30,7 +37,8 @@ export default class WishList extends React.Component {
         name={this.state.wishes[i].name} 
         price={this.state.wishes[i].price} 
         category={this.state.wishes[i].category}
-        additional_info={this.state.wishes[i].additional_info} />);
+        additional_info={this.state.wishes[i].additional_info}
+        onRemove = {this.onRemoveChild}/>);
     };
     
     return (

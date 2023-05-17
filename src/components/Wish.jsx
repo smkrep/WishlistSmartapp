@@ -7,6 +7,7 @@ export default class Wish extends React.Component {
       super(props);
       this.state = {id: props.id, importance: props.importance, name: props.name, price: props.price, category: props.category, additional_info: props.additional_info}
         this.handleClick = this.handleClick.bind(this)
+        this.onRemove = props.onRemove
     }
 
   
@@ -15,7 +16,7 @@ export default class Wish extends React.Component {
       return (
         <div className={`wish ${this.state.importance} `} id={`wish-${this.state.id}`}>
                 <div className="header">
-                    <p className="options">⋮</p>
+                    <p className="options" onClick={() => this.onRemove(this.state.name)}>⋮</p>
                 </div>
                 <div className="name" onClick={this.handleClick}>
                     <span>{this.state.name}</span>
