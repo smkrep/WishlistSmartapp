@@ -38,6 +38,10 @@
     flex-direction: column;
 }
 
+.modal__content > form > p {
+    margin: 0;
+}
+
 .textInput{
     background-color: #3d3d3d;
     border: none;
@@ -70,6 +74,12 @@
     padding: 10px;
     margin-bottom: 1em;
     cursor: pointer;
+}
+
+.selector-label {
+    color: #e0e0e0;
+    font-size: 18pt;
+    margin-right: 10px;
 }
 
 .buttonSubmit {
@@ -107,3 +117,27 @@ input::-webkit-inner-spin-button {
 input[type='number'] {
     -moz-appearance: textfield;
 }
+
+@media (max-width:768px) {
+    .modal__content {
+      width: 80%;
+    }
+  }
+
+  @media (max-width:350px) {
+    .textInput {
+      font-size: 14pt;
+    }
+    .selector {
+        font-size: 14pt;
+      }
+      .selector-label {
+        font-size: 14pt;
+      }
+    .textArea {
+        font-size: 14pt;
+    }
+    .buttonSubmit {
+        font-size: 14pt;
+    }
+  }
