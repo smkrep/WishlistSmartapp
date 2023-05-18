@@ -96,7 +96,7 @@ body {
   margin: 10px;
   display: flex;
   flex-direction: column;
-  transition: max-height 0.5s ease-out;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .wish > .header {
@@ -131,7 +131,7 @@ body {
 
 .wish:hover {
     max-height: 17rem;
-    transition: max-height 0.5s ease-in;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 1, 1);
 }
 
 
@@ -189,6 +189,7 @@ body {
   text-overflow: ellipsis;
   overflow: hidden;
   margin-left: 2%;
+  max-height: 31px;
 }
 
 .description {
@@ -272,10 +273,11 @@ body {
 
 .wish.expanded {
   max-height: 50rem;
-  transition: max-height 0.5s ease-in;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .expanded .category-name {
+  max-height: fit-content;
   overflow: unset;
   word-break: break-word;
 }
