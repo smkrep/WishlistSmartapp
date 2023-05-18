@@ -27,7 +27,7 @@ export default class WishList extends React.Component {
       wishes: []
     }
 
-    this.wishobj = {importance: 'important', name: '', price: '', category: '', additional_info: ''}
+    this.wishobj = {importance: '', name: '', price: '', category: '', additional_info: ''}
 
     this.assistant = initializeAssistant(() => this.getStateForAssistant() );
     this.assistant.on("data", (event/*: any*/) => {
@@ -67,6 +67,17 @@ export default class WishList extends React.Component {
           break
         case 'importance':
           //this.wishobj({priority: action.note})
+          switch(action.note.toLowerCase()){
+            case 'высокий':
+              this.wishobj.importance = 'important'
+              break
+            case 'средний':
+              this.wishobj.importance = 'medium'
+              break
+            case 'низкий':
+              this.wishobj.importance = 'not-important'
+              break
+          }
           break
         case 'price':
           this.wishobj.price = action.note
