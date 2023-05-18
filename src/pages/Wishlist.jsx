@@ -91,7 +91,14 @@ export default class WishList extends React.Component {
           });
           break
         case 'additional':
-          this.wishobj.additional_info = action.note
+          switch(action.note.toLowerCase()){
+            case 'нет':
+              this.wishobj.additional_info = " "
+              break
+            default:
+              this.wishobj.additional_info = action.note
+              break
+          }
           this.setState({
             wishes: [...this.state.wishes, {importance: this.wishobj.importance, name: this.wishobj.name, price: this.wishobj.price, category: this.wishobj.category, additional_info: this.wishobj.additional_info}]
           });
