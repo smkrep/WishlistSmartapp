@@ -82,7 +82,7 @@ export default class WishList extends React.Component {
         case 'additional':
           this.wishobj.additional_info = action.note
           this.setState({
-            wishes: [...this.state.wishes, this.wishobj]
+            wishes: [...this.state.wishes, {importance: this.wishobj.importance, name: this.wishobj.name, price: this.wishobj.price, category: this.wishobj.category, additional_info: this.wishobj.additional_info}]
           });
           break
       }
