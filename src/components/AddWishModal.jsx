@@ -39,12 +39,14 @@ class AddForm extends React.Component {
       <>
       <button className="closeModal" onClick={() => {this.setActive(false); this.clearInput()}}>×</button>
       <form onSubmit={this.handleSubmit}>
-
+        <p>
+      <label htmlFor='importance' className="selector-label">Приоритет:</label>
         <select className="selector" value={this.state.importance} onChange={this.handleChange} id="importance" name="importance">
-            <option value="important">Важно</option>
-            <option value="medium">Средней важности</option>
-            <option value="not-important">Неважно</option>
+            <option value="important">Высокий</option>
+            <option value="medium">Средний</option>
+            <option value="not-important">Низкий</option>
         </select>
+        </p>
         <input className="textInput" value={this.state.name} onChange={this.handleChange} type="text" id="name" name="name" placeholder="Введите название" required minLength="1" maxLength="32" />
         <input className="textInput" value={this.state.price} onChange={this.handleChange} type="number" id="price" name="price" placeholder="Введите цену" required min="1"/>
         <input className="textInput" value={this.state.category} onChange={this.handleChange} type="text" id="category" name="category" placeholder="Введите категорию" required minLength="1" maxLength="32"/>

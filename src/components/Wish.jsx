@@ -1,5 +1,6 @@
 import React from 'react'
 import "../App.css"
+import trash from "../trash-can-solid.svg"
 
 
 export default class Wish extends React.Component {
@@ -15,8 +16,8 @@ export default class Wish extends React.Component {
       
       return (
         <div className={`wish ${this.state.importance} `} id={`wish-${this.state.id}`}>
-                <div className="header">
-                    <p className="options" onClick={() => this.onRemove(this.state.name)}>⋮</p>
+                <div className="header" onClick={() => this.onRemove(this.state.name)}>
+                    <img className="options" src={trash} width={20} height={20} />
                 </div>
                 <div className="name" onClick={this.handleClick}>
                     <span>{this.state.name}</span>
