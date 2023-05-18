@@ -74,6 +74,11 @@ export default class WishList extends React.Component {
         case 'category':
           this.wishobj.category = action.note
           break
+        case 'delname':
+          this.setState({
+            wishes: this.state.wishes.filter(elem => elem.name !== action.note)
+          });
+          break
         case 'additional':
           this.wishobj.additional_info = action.note
           this.setState({
