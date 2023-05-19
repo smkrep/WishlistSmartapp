@@ -104,15 +104,25 @@ body {
       height: 1.75rem;
       border-radius: 15px 15px 0 0;
       text-align: center;
-      cursor: pointer;
+      
   }
 
   .options {
     margin: 5px 0 0 0;
     color: rgb(224, 224, 224);
     font-size: 20pt;
-    fill: #3d3d3d;
   }
+
+.deleteWish {
+  cursor: pointer;
+  width: 20%;
+  margin: auto;
+}
+
+.footer {
+    height: 200px;
+    width: auto;
+}
   
 
 .wish > .name {

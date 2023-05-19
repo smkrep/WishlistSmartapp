@@ -16,8 +16,10 @@ export default class Wish extends React.Component {
       
       return (
         <div className={`wish ${this.state.importance} `} id={`wish-${this.state.id}`}>
-                <div className="header" onClick={() => this.onRemove(this.state.name)}>
-                    <img className="options" src={trash} width={20} height={20} />
+                <div className="header" >
+                    <div className='deleteWish'>
+                        <img className="options" src={trash} width={20} height={20} onClick={() => this.onRemove(this.state.name)}/>
+                    </div>
                 </div>
                 <div className="name" onClick={this.handleClick}>
                     <span>{this.state.name}</span>

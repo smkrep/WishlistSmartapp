@@ -155,6 +155,8 @@ export const ParentComponent = props => {
     <section className="container">
       {props.children}
     </section>
+    <section className='footer'>
+    </section>
     <AddWishModal active={modalActive} setActive={setModalActive} onAdd={props.onAdd}/>
   </div>)
 };
