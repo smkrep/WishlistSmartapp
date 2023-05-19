@@ -96,7 +96,7 @@ body {
   margin: 10px;
   display: flex;
   flex-direction: column;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 1, 1);
+  transition: none;
 }
 
 .wish > .header {
@@ -132,7 +132,6 @@ body {
 
 .wish:hover, .wish:active {
     max-height: 17rem;
-    transition: max-height 0.5s cubic-bezier(0.4, 0, 1, 1);
     box-shadow: 0 0 50px #202020;
 }
 
