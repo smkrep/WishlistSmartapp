@@ -140,17 +140,6 @@ body {
       transition: height 0.5s;
 }
 
-.wish:hover, .wish:active {
-    max-height: 17rem;
-    box-shadow: 0 0 50px #202020;
-}
-
-
-.wish:hover .name {
-  height: 48%;
-  transition: height 0.5s;
-}
-
 .description-header {
    color: rgb(150, 150, 150);
    font-size: 10pt;
@@ -348,10 +337,19 @@ body {
   .addWishButton {
     width: 70%;
   }
+  .description-header {
+    margin: -5px;
+  }
+
 }
 
-@media (max-width:450px) {
-  .description-header {
-    margin: 22px 0;
+@media (min-width: 800px) {
+  .wish:hover, .wish:active {
+    max-height: 17rem;
+    box-shadow: 0 0 50px #202020;
+  }
+  .wish:hover .name {
+    height: 48%;
+    transition: height 0.5s;
   }
 }

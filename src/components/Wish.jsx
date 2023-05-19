@@ -23,7 +23,7 @@ export default class Wish extends React.Component {
                 </div>
                 <div className="name" onClick={this.handleClick}>
                     <span>{this.state.name}</span>
-                    <p className='description-header'>Подробнее</p>
+                    <p className='description-header'>˅ Подробнее ˅</p>
                     <div className="description">
                         <p className="description-text">{this.state.additional_info}</p>
                     </div>
