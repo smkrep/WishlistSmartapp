@@ -272,7 +272,7 @@ body {
 }
 
 .wish.expanded {
-  max-height: 50rem;
+  max-height: 50rem !important;
   transition: max-height 0.5s cubic-bezier(0.4, 0, 1, 1);
 }
 
