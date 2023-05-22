@@ -23,6 +23,18 @@ class AddForm extends React.Component {
     this.setActive(false)
     event.preventDefault();
   }
+
+  handleFocus(){
+    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    var ht = document.getElementsByTagName("html")[0]
+    var bd = document.getElementsByTagName("body")[0]
+    ht.style.width = w
+    ht.style.height = h
+    bd.style.width = w
+    bd.style.height = h
+    
+  }
  
   clearInput() {
     this.setState({importance: 'important', name: '', price: '', category: '', additional_info: ''});
@@ -47,10 +59,10 @@ class AddForm extends React.Component {
             <option value="not-important">Низкий</option>
         </select>
         </p>
-        <input className="textInput" value={this.state.name} onChange={this.handleChange} type="text" id="name" name="name" placeholder="Введите название" required minLength="1" maxLength="32" />
-        <input className="textInput" value={this.state.price} onChange={this.handleChange} type="number" id="price" name="price" placeholder="Введите цену" required min="1"/>
-        <input className="textInput" value={this.state.category} onChange={this.handleChange} type="text" id="category" name="category" placeholder="Введите категорию" required minLength="1" maxLength="32"/>
-        <textarea className="textArea" value={this.state.additional_info} onChange={this.handleChange} id="additional-info" name="additional_info"></textarea>
+        <input className="textInput" value={this.state.name} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} type="text" id="name" name="name" placeholder="Введите название" required minLength="1" maxLength="32" />
+        <input className="textInput" value={this.state.price} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} type="number" id="price" name="price" placeholder="Введите цену" required min="1"/>
+        <input className="textInput" value={this.state.category} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} type="text" id="category" name="category" placeholder="Введите категорию" required minLength="1" maxLength="32"/>
+        <textarea className="textArea" value={this.state.additional_info} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} id="additional-info" name="additional_info"></textarea>
         <button className="buttonSubmit" type="submit">Добавить</button>
 
     </form>
