@@ -11,6 +11,8 @@ class AddForm extends React.Component {
     this.setActive = props.setActive
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleUnfocus = this.handleUnfocus.bind(this);
   }
 
   handleChange(event) {
@@ -25,15 +27,20 @@ class AddForm extends React.Component {
   }
 
   handleFocus(){
-    var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-    var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    var ht = document.getElementsByTagName("html")[0]
-    var bd = document.getElementsByTagName("body")[0]
-    ht.style.width = w
-    ht.style.height = h
-    bd.style.width = w
-    bd.style.height = h
+    var x = window.matchMedia("(max-width: 800px)")
+    if (x.matches) {
+      console.log(document.getElementsByClassName("modal")[0])
+      document.getElementsByClassName("modal")[0].style.alignItems = "flex-start"
+    }
     
+  }
+
+  handleUnfocus(){
+    var x = window.matchMedia("(max-width: 800px)")
+    if (x.matches) {
+      console.log(document.getElementsByClassName("modal")[0])
+    document.getElementsByClassName("modal")[0].style.alignItems = "center"
+    }
   }
  
   clearInput() {
@@ -59,10 +66,10 @@ class AddForm extends React.Component {
             <option value="not-important">Низкий</option>
         </select>
         </p>
-        <input className="textInput" value={this.state.name} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} type="text" id="name" name="name" placeholder="Введите название" required minLength="1" maxLength="32" />
-        <input className="textInput" value={this.state.price} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} type="number" id="price" name="price" placeholder="Введите цену" required min="1"/>
-        <input className="textInput" value={this.state.category} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} type="text" id="category" name="category" placeholder="Введите категорию" required minLength="1" maxLength="32"/>
-        <textarea className="textArea" value={this.state.additional_info} onChange={this.handleChange} onBlur={this.handleFocus} onFocus={this.handleFocus} id="additional-info" name="additional_info"></textarea>
+        <input className="textInput" value={this.state.name} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} type="text" id="name" name="name" placeholder="Введите название" required minLength="1" maxLength="32" />
+        <input className="textInput" value={this.state.price} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} type="number" id="price" name="price" placeholder="Введите цену" required min="1"/>
+        <input className="textInput" value={this.state.category} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} type="text" id="category" name="category" placeholder="Введите категорию" required minLength="1" maxLength="32"/>
+        <textarea className="textArea" value={this.state.additional_info} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} id="additional-info" name="additional_info"></textarea>
         <button className="buttonSubmit" type="submit">Добавить</button>
 
     </form>
