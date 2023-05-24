@@ -87,7 +87,7 @@ export default class WishList extends React.Component {
           break
         case 'delname':
           this.setState({
-            wishes: this.state.wishes.filter(elem => elem.name !== action.note)
+            wishes: this.state.wishes.filter(elem => elem.name.toLowerCase() !== action.note.toLowerCase())
           });
           break
         case 'additional':
