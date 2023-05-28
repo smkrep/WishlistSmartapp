@@ -107,7 +107,23 @@ export default class WishList extends React.Component {
     }
   }
 
+  update(listOfWishes){
+    const Http = new XMLHttpRequest();
+    const url = 'http://localhost:2603/api/updateWishes/';
+
+    var body = listOfWishes
+
+    Http.open("POST", url, true);
+    Http.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+    Http.send(body);
+
+    Http.onreadystatechange = (e) => {
+      console.log(Http.responseText)
+    }
+  }
+
   onAddChild = (state) => {
+    this.update(JSON.stringify({sberuserid: 12345678, list_of_wishes: [...this.state.wishes, state]}))
     this.setState({
       wishes: [...this.state.wishes, state]
     });
@@ -118,6 +134,7 @@ export default class WishList extends React.Component {
       wishes: this.state.wishes.filter(elem => elem.name !== state)
     })
   }
+
 
   render() {
     
