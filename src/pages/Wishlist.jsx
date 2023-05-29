@@ -7,7 +7,7 @@ import {
   createAssistant,
 } from "@salutejs/client";
 
-const CONN_URL = "http://localhost:2603"
+const CONN_URL = "http://94.26.248.117:8000"
 
 
 const initializeAssistant = (getState/*: any*/) => {
