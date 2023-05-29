@@ -121,9 +121,12 @@ export default class WishList extends React.Component {
       const res = Http.response;
       if (res != ""){
         //console.log(res);
-        const obj = JSON.parse(res)
+        var obj = JSON.parse(res)
         //console.log(obj)
-        console.log(obj._id)
+        console.log(obj['wishes'])
+        this.setState({
+          wishes: obj['wishes']
+        })
       } 
 
       
