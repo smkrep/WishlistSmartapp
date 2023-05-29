@@ -7,6 +7,8 @@ import {
   createAssistant,
 } from "@salutejs/client";
 
+const CONN_URL = "http://localhost:2603"
+
 
 const initializeAssistant = (getState/*: any*/) => {
   if (process.env.NODE_ENV === "development") {
@@ -27,10 +29,24 @@ export default class WishList extends React.Component {
       wishes: []
     }
 
+    this.sberAssistantUserId = null
+    console.log(typeof(this.sberAssistantUserId))
+
     this.wishobj = {importance: '', name: '', price: '', category: '', additional_info: ''}
 
     this.assistant = initializeAssistant(() => this.getStateForAssistant() );
     this.assistant.on("data", (event/*: any*/) => {
+      if(event.type=="smart_app_data"){
+        if (event.sub != undefined) {
+          this.sberAssistantUserId = event.sub
+          console.log("Sub", this.sberAssistantUserId)
+          this.getWishesFromDB(this.sberAssistantUserId)
+        }else if (event.user_id != undefined) {
+          this.sberAssistantUserId = event.user_id
+          console.log("UserId", this.sberAssistantUserId)
+          this.getWishesFromDB(this.sberAssistantUserId)
+        }
+      };
       //console.log(`assistant.on(data)`, event);
       const { action } = event
       this.dispatchAssistantAction(action);
@@ -86,6 +102,7 @@ export default class WishList extends React.Component {
           this.wishobj.category = action.note
           break
         case 'delname':
+          this.updateWishesInDB(JSON.stringify({sberuserid: this.sberAssistantUserId, list_of_wishes: this.state.wishes.filter(elem => elem.name.toLowerCase() !== action.note.toLowerCase())}))
           this.setState({
             wishes: this.state.wishes.filter(elem => elem.name.toLowerCase() !== action.note.toLowerCase())
           });
@@ -99,6 +116,7 @@ export default class WishList extends React.Component {
               this.wishobj.additional_info = action.note
               break
           }
+          this.updateWishesInDB(JSON.stringify({sberuserid: this.sberAssistantUserId, list_of_wishes: [...this.state.wishes, {importance: this.wishobj.importance, name: this.wishobj.name, price: this.wishobj.price, category: this.wishobj.category, additional_info: this.wishobj.additional_info}]}))
           this.setState({
             wishes: [...this.state.wishes, {importance: this.wishobj.importance, name: this.wishobj.name, price: this.wishobj.price, category: this.wishobj.category, additional_info: this.wishobj.additional_info}]
           });
@@ -107,13 +125,9 @@ export default class WishList extends React.Component {
     }
   }
 
-  componentDidMount(){
-    this.getWishesFromDB()
-  }
-
-  getWishesFromDB(){
+  getWishesFromDB(identificator){
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:2603/api/getWishes/?sberuserid=12345678';
+    const url = CONN_URL + "/api/getWishes/?sberuserid=" + identificator;
     Http.open("GET", url);
     Http.send();
 
@@ -121,19 +135,18 @@ export default class WishList extends React.Component {
       const res = Http.response;
       if (res != ""){
         var obj = JSON.parse(res)
-        console.log(obj['wishes'])
+        if (obj == null) return
         this.setState({
           wishes: obj['wishes']
         })
-      } 
-
+      }
       
     }
   }
 
   updateWishesInDB(listOfWishes){
     const Http = new XMLHttpRequest();
-    const url = 'http://localhost:2603/api/updateWishes/';
+    const url = CONN_URL + "/api/updateWishes/";
 
     var body = listOfWishes
 
@@ -147,14 +160,14 @@ export default class WishList extends React.Component {
   }
 
   onAddChild = (state) => {
-    this.updateWishesInDB(JSON.stringify({sberuserid: 12345678, list_of_wishes: [...this.state.wishes, state]}))
+    this.updateWishesInDB(JSON.stringify({sberuserid: this.sberAssistantUserId, list_of_wishes: [...this.state.wishes, state]}))
     this.setState({
       wishes: [...this.state.wishes, state]
     });
   }
 
   onRemoveChild = (state) => {
-    this.updateWishesInDB(JSON.stringify({sberuserid: 12345678, list_of_wishes: this.state.wishes.filter(elem => elem.name !== state)}))
+    this.updateWishesInDB(JSON.stringify({sberuserid: this.sberAssistantUserId, list_of_wishes: this.state.wishes.filter(elem => elem.name !== state)}))
     this.setState({
       wishes: this.state.wishes.filter(elem => elem.name !== state)
     })
