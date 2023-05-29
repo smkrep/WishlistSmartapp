@@ -67,7 +67,7 @@ class AddForm extends React.Component {
         </select>
         </p>
         <input className="textInput" value={this.state.name} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} type="text" id="name" name="name" placeholder="Введите название" required minLength="1" maxLength="32" />
-        <input className="textInput" value={this.state.price} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} type="text" inputMode="numeric" id="price" name="price" placeholder="Введите цену" pattern="\d*" required min="0"/>
+        <input className="textInput" value={this.state.price} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} type="text" inputMode="numeric" id="price" name="price" placeholder="Введите цену" onInvalid={(e)=>{e.target.setCustomValidity("Введите неотрицательное целое число.")}} onInput={(e)=>{e.target.setCustomValidity("")}} pattern="\d*" required min="0"/>
         <input className="textInput" value={this.state.category} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} type="text" id="category" name="category" placeholder="Введите категорию" required minLength="1" maxLength="32"/>
         <textarea className="textArea" value={this.state.additional_info} onChange={this.handleChange} onBlur={this.handleUnfocus} onFocus={this.handleFocus} id="additional-info" name="additional_info"></textarea>
         <button className="buttonSubmit" type="submit">Добавить</button>
