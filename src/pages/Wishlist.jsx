@@ -29,7 +29,7 @@ export default class WishList extends React.Component {
       wishes: []
     }
 
-    this.sberAssistantUserId = null
+    this.sberAssistantUserId = "colatestid"
     console.log(typeof(this.sberAssistantUserId))
 
     this.wishobj = {importance: '', name: '', price: '', category: '', additional_info: ''}
