@@ -120,9 +120,7 @@ export default class WishList extends React.Component {
     Http.onreadystatechange = (e) => {
       const res = Http.response;
       if (res != ""){
-        //console.log(res);
         var obj = JSON.parse(res)
-        //console.log(obj)
         console.log(obj['wishes'])
         this.setState({
           wishes: obj['wishes']
@@ -130,7 +128,6 @@ export default class WishList extends React.Component {
       } 
 
       
-      //return res
     }
   }
 
@@ -157,6 +154,7 @@ export default class WishList extends React.Component {
   }
 
   onRemoveChild = (state) => {
+    this.updateWishesInDB(JSON.stringify({sberuserid: 12345678, list_of_wishes: this.state.wishes.filter(elem => elem.name !== state)}))
     this.setState({
       wishes: this.state.wishes.filter(elem => elem.name !== state)
     })
