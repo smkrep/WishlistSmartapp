@@ -79,8 +79,8 @@ export default class WishList extends React.Component {
     if (action) {
       switch (action.type) {
         case 'sberid':
-          this.sberAssistantUserId = action.note
-          console.log(this.sberAssistantUserId)
+          // this.sberAssistantUserId = action.note
+          // console.log(this.sberAssistantUserId)
           this.getWishesFromDB(this.sberAssistantUserId)
           break
         case 'name':
