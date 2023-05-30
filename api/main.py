@@ -34,6 +34,10 @@ def update_wishes(toupdate: toUpdate):
     coll.update_one({'sberuserid': toupdate.sberuserid}, {"$set": {'wishes': toupdate.list_of_wishes}}, upsert=True)
     return toupdate
 
+@app.route("/test")
+def test():
+    return "тест тест тест тест тест"
+
 
 def getDatabase():
     # Provide the mongodb atlas url to connect python to mongodb using pymongo
