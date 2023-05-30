@@ -7,7 +7,7 @@ import {
   createAssistant,
 } from "@salutejs/client";
 
-const CONN_URL = "https://wishlist-psi.vercel.app"
+const CONN_URL = "https://server-drab-six.vercel.app"
 
 
 const initializeAssistant = (getState/*: any*/) => {
