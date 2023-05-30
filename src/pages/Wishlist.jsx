@@ -80,8 +80,8 @@ export default class WishList extends React.Component {
       switch (action.type) {
         case 'sberid':
           this.sberAssistantUserId = action.note
-          this.sberAssistantUserId.replaceAll(' ', '')
-          this.sberAssistantUserId.replaceAll('+', '')
+          this.sberAssistantUserId = this.sberAssistantUserId.replaceAll(' ', '')
+          this.sberAssistantUserId = this.sberAssistantUserId.replaceAll('+', '')
           console.log(this.sberAssistantUserId)
           this.getWishesFromDB(this.sberAssistantUserId)
           break
