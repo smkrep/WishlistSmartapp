@@ -38,13 +38,13 @@ export default class WishList extends React.Component {
     this.assistant.on("data", (event/*: any*/) => {
       if(event.type=="smart_app_data"){
         if (event.sub != undefined) {
-          this.sberAssistantUserId = event.sub
-          console.log("Sub", this.sberAssistantUserId)
-          this.getWishesFromDB(this.sberAssistantUserId)
+          // this.sberAssistantUserId = event.sub
+          // console.log("Sub", this.sberAssistantUserId)
+          // this.getWishesFromDB(this.sberAssistantUserId)
         }else if (event.user_id != undefined) {
-          this.sberAssistantUserId = event.user_id
-          console.log("UserId", this.sberAssistantUserId)
-          this.getWishesFromDB(this.sberAssistantUserId)
+          // this.sberAssistantUserId = event.user_id
+          // console.log("UserId", this.sberAssistantUserId)
+          // this.getWishesFromDB(this.sberAssistantUserId)
         }
       };
       //console.log(`assistant.on(data)`, event);
@@ -78,6 +78,11 @@ export default class WishList extends React.Component {
     //console.log('dispatchAssistantAction', action);
     if (action) {
       switch (action.type) {
+        case 'sberid':
+          this.sberAssistantUserId = action.note
+          console.log(this.sberAssistantUserId)
+          this.getWishesFromDB(this.sberAssistantUserId)
+          break
         case 'name':
           this.wishobj.name = action.note
           break
