@@ -34,9 +34,9 @@ def update_wishes(toupdate: toUpdate):
     coll.update_one({'sberuserid': toupdate.sberuserid}, {"$set": {'wishes': toupdate.list_of_wishes}}, upsert=True)
     return toupdate
 
-@app.route("/test")
+@app.route("/test/")
 def test():
-    return "тест тест тест тест тест"
+    return "test test test test"
 
 
 def getDatabase():
